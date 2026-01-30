@@ -1,31 +1,87 @@
 # 🌐 WebPilot AI: Autonomous Web Navigator
 
-**WebPilot AI** is an intelligent, autonomous browser agent that performs web tasks just like a human. Instead of following rigid, hard-coded scripts, it uses **Large Language Models (LLMs)** and **Playwright** to understand page content and make real-time decisions to achieve a goal.
+**WebPilot AI** is an intelligent, autonomous browser agent designed to navigate the web, perform complex searches, and extract data just like a human—but at machine speed. Instead of relying on brittle, hard-coded scripts, it leverages **Large Language Models (LLMs)** and **Playwright** to understand web content semantically and make real-time decisions.
 
-## Why it stands out
-Traditional web scrapers break if a website changes its design. **WebPilot AI** is design-agnostic. It analyzes the "Semantic Meaning" of a page. If a button moves or a search bar changes its ID, the agent "reasons" its way through to find the correct element.
+---
 
-## Key Features
-- **Autonomous Reasoning:** Uses an iterative loop (Step-by-Step) to decide whether to Search, Click, or provide an Answer.
-- **Dynamic Action Handling:** Manages browser navigation, text input, and element interaction automatically via Playwright.
-- **Optimized for Speed:** Powered by **Llama 3.3 (Groq)** for lightning-fast decision-making.
-- **Custom Execution Loop:** Built with a custom async engine to avoid the limitations of third-party frameworks.
+##  Why WebPilot AI?
+Traditional automation tools (like Selenium) break the moment a website updates its UI or changes a button's ID. **WebPilot AI is different.** 
+- **Design Agnostic:** It analyzes the "meaning" of a page. Even if the search bar moves or changes its CSS class, the agent "reasons" its way to find the right element.
+- **Goal-Oriented:** You give it a mission, and it figures out the steps to get there autonomously.
 
-## Tech Stack
+##  Key Features
+- **Autonomous Reasoning Loop:** Uses a "Thought-Action-Observation" cycle to complete multi-step tasks.
+- **Dynamic Element Interaction:** Automatically handles browser navigation, text input, and clicking through dynamic content.
+- **High-Performance Inference:** Powered by **Llama 3.3-70B (via Groq)** for sub-second reasoning and decision-making.
+- **Self-Correction:** Built to handle dynamic UI changes and recover from selector timeouts.
+- **Async Architecture:** Developed using Python's `asyncio` and Playwright for high-speed, non-blocking execution.
+
+##  Tech Stack
 - **Engine:** Python & Playwright (Asynchronous API)
-- **Intelligence:** Llama 3.3-70B via Groq
-- **Orchestration:** LangChain (Core Logic)
-- **Environment:** Managed via `.env` for secure API handling
+- **Brain (LLM):** Llama 3.3-70B via Groq (OpenAI Proxy logic)
+- **Framework:** LangChain (Core Messaging & Orchestration)
+- **Environment:** Managed via `python-dotenv` for secure API handling
 
-## How it Works (The Workflow)
-1. **Perception:** The agent opens the browser and extracts the "InnerText" of the page.
-2. **Analysis:** It sends the task and page content to the LLM.
-3. **Decision:** The AI responds with an action (e.g., `SEARCH: OpenAI Sora`).
-4. **Execution:** Playwright executes the action on the live browser.
-5. **Observation:** The agent looks at the new page and repeats until the task is complete.
+##  How it Works (The Workflow)
+1. **Perception:** The agent launches a Chromium instance and extracts the simplified inner text of the page.
+2. **Analysis:** It sends the task and current page state to the LLM.
+3. **Decision:** The AI evaluates the page and responds with a specific action (e.g., `SEARCH`, `CLICK`, or `ANSWER`).
+4. **Execution:** The custom engine translates the AI's decision into a Playwright command.
+5. **Observation:** The agent observes the result of its action on the new page and repeats the cycle until the mission is accomplished.
 
 ##  Installation & Setup
-1. **Clone the Repo:**
+
+1. **Clone the Repository:**
    ```bash
    git clone https://github.com/naeemullah-datascientist/WebPilot-AI.git
    cd WebPilot-AI
+
+Install Dependencies:
+
+code
+Bash
+download
+content_copy
+expand_less
+pip install -r requirements.txt
+playwright install chromium
+
+Configure Environment Variables:
+Create a .env file in the root directory and add your Groq API Key:
+
+code
+Text
+download
+content_copy
+expand_less
+GROQ_API_KEY=your_gsk_key_here
+
+Run the Agent:
+
+code
+Bash
+download
+content_copy
+expand_less
+python main.py
+📊 Sample Mission
+
+User Prompt: "Find out who coined the term Artificial Intelligence and in what year."
+
+The AI Workflow:
+
+Navigates to Google.com.
+
+Identifies the search bar and types "Who coined the term Artificial Intelligence".
+
+Analyzes the search results and clicks on the most relevant link.
+
+Reads the page content, extracts the fact, and terminates.
+
+Final Result: "John McCarthy, in 1955."
+
+ Developed by
+
+Naeem Ullah
+Final Year Data Science Student @ PUCIT
+LinkedIn 
