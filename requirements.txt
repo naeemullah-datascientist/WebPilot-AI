@@ -1,0 +1,4 @@
+playwright
+langchain-openai
+langchain-groq
+python-dotenv
