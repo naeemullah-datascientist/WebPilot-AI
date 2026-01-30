@@ -64,11 +64,11 @@ download
 content_copy
 expand_less
 python main.py
-📊 Sample Mission
+## 📊 Sample Mission
 
 User Prompt: "Find out who coined the term Artificial Intelligence and in what year."
 
-The AI Workflow:
+## The AI Workflow:
 
 Navigates to Google.com.
 
@@ -80,8 +80,8 @@ Reads the page content, extracts the fact, and terminates.
 
 Final Result: "John McCarthy, in 1955."
 
- Developed by
+## Developed by
 
 Naeem Ullah
 Final Year Data Science Student @ PUCIT
-LinkedIn 
+
